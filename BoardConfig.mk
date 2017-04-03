@@ -1,6 +1,6 @@
 # inherit from the proprietary version
 -include vendor/doogee/x5pro/BoardConfigVendor.mk
-USE_NINJA := false
+#USE_NINJA := false
 # GPS
 TARGET_SPECIFIC_HEADER_PATH := device/doogee/x5pro/include
 
