@@ -3,7 +3,7 @@
 #USE_NINJA := false
 # GPS
 TARGET_SPECIFIC_HEADER_PATH := device/doogee/x5pro/include
-
+TARGET_SYSTEM_PROP += device/doogee/x5pro/system.prop
 # Platform
 TARGET_BOARD_PLATFORM := mt6735m
 TARGET_NO_BOOTLOADER := true
