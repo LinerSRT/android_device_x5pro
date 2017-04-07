@@ -174,7 +174,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 ## CM14 mtk symbols
 PRODUCT_PACKAGES += \
     libmtk_symbols \
-    #libmtk_shyms
+    libmtk_shyms
 
 ## GPS
 PRODUCT_PACKAGES += \
