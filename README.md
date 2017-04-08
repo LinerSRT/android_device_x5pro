@@ -1,5 +1,7 @@
 
-### Device Tree for Doogee X5PRO (7.1.1 , 3.18.19+)
+###                                          Device Tree for Doogee X5PRO (7.1.1 , 3.18.19+)
+
+![X5PRO](https://ae01.alicdn.com/kf/HTB11K0yLVXXXXXGXFXXq6xXFXXXs/%D0%9D%D0%BE%D0%B2%D1%8B%D0%B9-original-Doogee-X5-Doogee-X5-Pro-Android-5-1-5-0-HD-1280-720-%D0%A7%D0%B5%D1%82%D1%8B%D1%80%D0%B5%D1%85%D1%8A%D1%8F%D0%B4%D0%B5%D1%80%D0%BD%D1%8B%D1%85.jpg)
 
 **Ветка master мертвая!**
 
