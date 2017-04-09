@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_x5pro.mk
+    $(LOCAL_DIR)/aicp_x5pro.mk
