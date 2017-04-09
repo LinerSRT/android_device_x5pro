@@ -7,7 +7,7 @@ PRODUCT_RELEASE_NAME := x5pro
 $(call inherit-product, vendor/aicp/configs/common.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/doogee/x5pro/full_x5pro.mk)
+$(call inherit-product, device/doogee/x5pro/device_x5pro.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := x5pro
