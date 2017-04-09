@@ -4,7 +4,7 @@
 PRODUCT_RELEASE_NAME := x5pro
 
 # Inherit some common AOSP stuff.
-$(call inherit-product, vendor/aosp/common.mk)
+$(call inherit-product, vendor/aicp/configs/common.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/doogee/x5pro/full_x5pro.mk)
