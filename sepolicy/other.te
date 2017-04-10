@@ -59,7 +59,6 @@ allow toolbox recovery_block_device:blk_file setattr;
 allow toolbox block_device:blk_file setattr;
 allow toolbox proinfo_device:blk_file setattr;
 allow toolbox frp_block_device:blk_file setattr;
-allow sysinit rootfs:lnk_file getattr;
 allow ccci_fsd rootfs:lnk_file getattr;
 allow ccci_fsd sysfs:file { read open };
 allow ccci_fsd mtk_md_prop:file { read open getattr };
