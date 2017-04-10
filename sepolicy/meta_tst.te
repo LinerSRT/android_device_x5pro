@@ -19,7 +19,6 @@ allow meta_tst fm_device:chr_file { read write open ioctl };
 allow meta_tst sysfs_gps_file:dir search;
 allow meta_tst sysfs_gps_file:file rw_file_perms;
 
-allow meta_tst gps_device:chr_file { read write open };
 allow meta_tst agpsd_data_file:dir search;
 allow meta_tst agpsd_data_file:sock_file write;
 allow meta_tst gps_data_file:file create_file_perms;
