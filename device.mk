@@ -41,18 +41,6 @@ endif
 PRODUCT_PACKAGES += \
     libxlog
 
-# Lights
-#PRODUCT_PACKAGES += \
-#    lights.mt6737m
-
-# Audio
-#PRODUCT_PACKAGES += \
-#    audio.primary.mt6737m \
-#    audio_policy.default \
-#    audio.a2dp.default \
-#    audio.usb.default \
-#    audio.r_submix.default
-
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
@@ -131,10 +119,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb
 
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
-
 # FM Radio
 PRODUCT_PACKAGES += \
     FMRadio \
@@ -145,9 +129,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/fmr/mt6627_fm_cust.cfg:system/etc/fmr/mt6627_fm_cust.cfg
 
-# Camera
-PRODUCT_PACKAGES += \
-    Snap
 
 # mrdump related
 PRODUCT_PACKAGES += \
@@ -161,7 +142,6 @@ $(shell touch $(OUT)/obj/KERNEL_OBJ/usr/export_includes)
 ##
 $(call inherit-product, build/target/product/full.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_x5pro
 PRODUCT_DEVICE := x5pro
 PRODUCT_LOCALES := en_US ru_RU
