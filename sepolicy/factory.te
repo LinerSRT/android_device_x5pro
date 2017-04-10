@@ -56,7 +56,6 @@ allow factory msensor_device:chr_file rw_file_perms;
 allow factory agpsd_data_file:dir r_dir_perms;
 allow factory agpsd_data_file:sock_file write;
 allow factory stpgps_device:chr_file rw_file_perms;
-allow factory gps_device:chr_file rw_file_perms;
 allow factory mnld_data_file:dir rw_dir_perms;
 allow factory mnld_data_file:file rw_file_perms;
 allow factory mnld_exec:file rx_file_perms;
