@@ -17,6 +17,8 @@
 /system/bin/slpd                                                u:object_r:slpd_exec:s0
 /system/bin/terservice                                          u:object_r:terservice_exec:s0
 /system/bin/thermal_manager                                     u:object_r:thermal_manager_exec:s0
+/system/bin/tune2fs                                             u:object_r:system_file:s0
+/system/bin/em_svr                                              u:object_r:system_file:s0
 /system/bin/mtkrild                                             u:object_r:ril-daemon-mtk_exec:s0
 /system/bin/wifi2agps                                           u:object_r:wifi2agps_exec:s0
 /system/bin/wmt_loader                                          u:object_r:wmt_loader_exec:s0
@@ -29,7 +31,12 @@
 /system/bin/qmcX983d                                            u:object_r:qmcX983d_exec:s0
 #/system/bin/guiext-server                                       u:object_r:guiext-server_exec:s0
 /system/bin/meizupshelper                                       u:object_r:meizupshelper_exec:s0
-
+/system/bin/sh                                                  u:object_r:shell_exec:s0
+/sys/devices/virtual/BOOT/BOOT/boot/boot_mode                   u:object_r:nvram_daemon:s0
+/dev/block/mmcblk0p2                                            u:object_r:nvram_device:s0
+/dev/__properties__/                                            u:object_r:nvram_prop:s0
+/dev/block/mmcblk0p6                                            u:object_r:ril-daemon-mtk:s0
+/dev/camera-pipemgr                                             u:object_r:camera_device:s0
 # Meta mode
 /sbin/multi_init                                                u:object_r:init_exec:s0
 /system/bin/meta_tst                                            u:object_r:meta_tst_exec:s0
@@ -73,7 +80,7 @@
 /dev/radio(/.*)?                                                u:object_r:radio_device:s0
 /dev/fm                                                         u:object_r:fm_device:s0
 /dev/Vcodec                                                     u:object_r:Vcodec_device:s0
-
+/proc/273/attr/current                                          u:object_r:servicemanager:s0
 # Sockets
 /dev/socket/netdiag(/.*)?                                       u:object_r:netdiag_socket:s0
 /dev/socket/rild[2-4]                                           u:object_r:rild_socket:s0
