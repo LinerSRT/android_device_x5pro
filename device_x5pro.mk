@@ -127,9 +127,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/permissions/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml 
 
-ADDITIONAL_BUILD_PROPERTIES += \
-cm.updater.type=plain \
-cm.updater.uri=https://raw.githubusercontent.com/SeriniTY320/updater/master/update.json \
+#ADDITIONAL_BUILD_PROPERTIES += \
+#cm.updater.type=plain \
+#cm.updater.uri=https://raw.githubusercontent.com/SeriniTY320/updater/master/update.json \
 
 # USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
