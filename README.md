@@ -35,4 +35,4 @@
 Перед ```git clone``` нужно указать бранч, к примеру ```-b LS14.1``` - скачает дерево под LineageOS 14.1
 
 Внимание! Перед сборкой необходимо применить патчи!
-> ` git clone https://github.com/SeriniTY320/patch.git && cd patch && sh start.sh `
+> ` cd devices/doogee/x5pro/patches && ./check-patches.sh && ./apply-patches.sh `
