@@ -10,7 +10,7 @@
 | RAM:           | 2Gb LPDDR3           |
 | ROM:           | 16Gb                 |
 | Display:       | 1280x720, IPS, 5'    |
-| OS:            | 7.1.1, x32           |
+| OS:            | 7.1.2, x32           |
 | Shipped OS:    | 5.1, 6.0 (x32)       |
 
 Баги и недочеты:
