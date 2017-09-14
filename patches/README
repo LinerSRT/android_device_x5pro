@@ -1,0 +1,5 @@
+This is patch directory
+
+cd working_directory
+sh device/doogee/x5pro/patches/install.sh
+sh device/doogee/x5pro/patches/uninstall.sh

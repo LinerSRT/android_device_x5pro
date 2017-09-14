@@ -14,12 +14,6 @@
  * limitations under the License.
  */
 
-/*
-#define PATH_WHITELIST_EXTRA_H \
-    "/proc/apid", \
-    "/proc/aprf",
-*/
-
 #define PATH_WHITELIST_EXTRA_H \
     "/proc/ged",
 

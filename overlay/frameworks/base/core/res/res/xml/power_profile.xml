@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <device name="Android">
     <item name="none">0</item>
-    <item name="screen.on">150</item>
-    <item name="screen.full">250</item>
+    <item name="screen.on">200</item>
+    <item name="screen.full">300</item>
     <item name="bluetooth.active">104</item>
     <item name="bluetooth.on">4</item>
     <item name="wifi.on">5</item>
@@ -18,14 +18,14 @@
         <value>4</value>
     </array>
     <array name="cpu.speeds">
-        <value>299000</value>
-        <value>442000</value>
-        <value>598000</value>
-        <value>819000</value>
-        <value>1040000</value>
-        <value>1170000</value>
-        <value>1235000</value>
-        <value>1300000</value>
+        <value>403000</value>
+        <value>806000</value>
+        <value>1183000</value>
+        <value>1326000</value>
+        <value>1482000</value>
+        <value>1664000</value>
+        <value>1885000</value>
+        <value>2158000</value>
     </array>
     <item name="cpu.idle">3.9</item>
 	<item name="cpu.awake">62</item>
@@ -39,7 +39,7 @@
 		<value>244.0</value>
 		<value>256.0</value>
     </array>
-    <item name="battery.capacity">2400</item>
+    <item name="battery.capacity">4500</item>
     <array name="wifi.batchedscan">
         <value>.2</value>
         <value>2</value>
