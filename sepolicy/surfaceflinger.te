@@ -1,3 +1,2 @@
-allow surfaceflinger pq_service:service_manager find;
-
-allow surfaceflinger debug_prop:property_service set;
+allow surfaceflinger sw_sync_device:chr_file { read write ioctl open };
+allow surfaceflinger hwc_prop:property_service set;

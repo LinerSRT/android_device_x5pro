@@ -1,1 +1,2 @@
-unix_socket_connect(radio, rild, ril-daemon-mtk)
+allow radio init:unix_dgram_socket write;
+#allow radio init_tmpfs:file read;
