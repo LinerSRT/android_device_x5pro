@@ -111,7 +111,7 @@ PRODUCT_PACKAGES += \
    android.hardware.memtrack@1.0-impl \
 
 # Render Script HIDL interfaces
-   android.hardware.renderscript@1.0-impl
+   PRODUCT_PACKAGES += android.hardware.renderscript@1.0-impl
 
 # GNSS HAL
 PRODUCT_PACKAGES += \
