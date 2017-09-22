@@ -52,6 +52,15 @@ PRODUCT_PACKAGES += \
 #    audio.a2dp.default \
 #    audio.usb.default \
 #    audio.r_submix.default
+# HIDL for O
+PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.broadcastradio@1.0-impl \
+    android.hardware.soundtrigger@2.0-impl
+
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -72,6 +81,42 @@ PRODUCT_PACKAGES += \
     dhcpcd.conf \
     wpa_supplicant \
     wpa_supplicant.conf
+
+#WiFi HIDL interfaces
+PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service
+
+# Bluetooth HAL
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl
+
+# Lights HIDL interfaces
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-impl
+
+# Sensors HIDL interfaces
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+
+# Vibrator HIDL interfaces
+PRODUCT_PACKAGES += \
+   android.hardware.vibrator@1.0-impl \
+
+# Display
+PRODUCT_PACKAGES += \
+   android.hardware.graphics.allocator@2.0-impl \
+   android.hardware.graphics.allocator@2.0-service \
+   android.hardware.graphics.composer@2.1-impl \
+   android.hardware.graphics.mapper@2.0-impl \
+   android.hardware.memtrack@1.0-impl \
+
+# Render Script HIDL interfaces
+   android.hardware.renderscript@1.0-impl
+
+# GNSS HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     $(LOCAL_PATH)/configs/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
@@ -185,3 +230,6 @@ PRODUCT_PACKAGES += \
     gps.mt6735m \
     YGPS
 
+#USB HIDL interfaces
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
