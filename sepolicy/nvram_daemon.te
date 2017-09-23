@@ -1,19 +1,21 @@
-type nvram_daemon, domain;
 type nvram_daemon_exec, exec_type, file_type;
+type nvram_daemon, domain;
 
 init_daemon_domain(nvram_daemon)
-allow nvram_daemon nvram_daemon_exec:file { read open getattr execute execute_no_trans};
-allow nvram_daemon nvram_data_file:dir { create add_name read write getattr setattr search };
-allow nvram_daemon nvram_data_file:file { create open read write getattr setattr };
-allow nvram_daemon nvram_device:blk_file { open read write getattr };
-allow nvram_daemon property_socket:sock_file write;
-allow nvram_daemon init:unix_stream_socket connectto;
-allow nvram_daemon gsensor_device:chr_file { open read write ioctl };
-allow nvram_daemon gyroscope_device:chr_file { open read write ioctl };
-allow nvram_daemon mtk_adc_cali_device:chr_file { open read write ioctl };
-allow nvram_daemon nvram_data_file:file open;
-allow nvram_daemon system_prop:property_service set;
-allow nvram_daemon touchpanel_data_file:dir { add_name read write getattr search };
-allow nvram_daemon touchpanel_data_file:file { create read open write getattr setattr };
-allow nvram_daemon sysfs:file { open read write };
-allow nvram_daemon self:capability { fsetid dac_read_search chown dac_override };
+
+allow nvram_daemon self:capability { fowner dac_override dac_read_search chown fsetid };
+allow nvram_daemon nvram_device:blk_file rw_file_perms;
+allow nvram_daemon nvdata_device:blk_file rw_file_perms;
+allow nvram_daemon nvdata_file:dir create_dir_perms;
+allow nvram_daemon nvdata_file:file create_file_perms;
+allow nvram_daemon shell_exec:file { read execute open execute_no_trans };
+allow nvram_daemon als_ps_device:chr_file r_file_perms;
+allow nvram_daemon mtk-adc-cali_device:chr_file rw_file_perms;
+allow nvram_daemon gsensor_device:chr_file r_file_perms;
+allow nvram_daemon msensor_device:chr_file r_file_perms;
+
+allow nvram_daemon proinfo_device:blk_file rw_file_perms;
+allow nvram_daemon nvram_prop:property_service set;
+allow nvram_daemon wmt_prop:property_service set;
+
+#unix_socket_connect(nvram_daemon, property, init)
