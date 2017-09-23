@@ -9,7 +9,7 @@ cd bionic
 git apply -v ../device/doogee/x5pro/patches/LIBC-patch-for-Oreo.patch
 cd ..
 cd system/sepolicy
-git apply -v ../../device/doogee/x5pro/patches/Revert-sepolicy-to-29.patch
+git apply -v ../../device/doogee/x5pro/patches/Add-N-stuff-to-sepolicy-(29v).patch
 cd ../..
 cd frameworks/av
 git apply -v ../../device/doogee/x5pro/patches/wvm-access-patch-for-oreo.patch

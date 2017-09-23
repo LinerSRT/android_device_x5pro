@@ -1,21 +1,28 @@
-From b3e149f14a6f6f534432ca5038662d1e85ed13bc Mon Sep 17 00:00:00 2001
+From 664f98aaf133938b00c421b8cd6634b0a8451611 Mon Sep 17 00:00:00 2001
 From: SeriniTY320 <SeriniTY320@gmail.com>
-Date: Fri, 22 Sep 2017 00:59:32 +0300
-Subject: [PATCH] Revert Orero sepolicy to 29
+Date: Sat, 23 Sep 2017 13:58:09 +0300
+Subject: [PATCH] Add N stuff to sepolicy
 
 ---
- private/app.te             |  5 +++--
+ private/app.te             |  9 +++++++--
  private/app_neverallows.te | 24 +++++++++++++-----------
+ private/file_contexts      |  6 ++++++
+ private/gpsd.te            | 32 ++++++++++++++++++++++++++++++++
  private/priv_app.te        |  3 ++-
- public/domain.te           |  9 ++++++---
+ private/system_server.te   |  6 ++++++
+ public/device.te           |  1 +
+ public/domain.te           | 11 +++++++----
+ public/file.te             |  3 ++-
  public/hal_drm.te          |  8 +++++---
  public/mediadrmserver.te   |  3 ++-
  public/mediaserver.te      |  8 +++++---
+ public/rild.te             |  3 +++
  public/shell.te            |  3 ++-
- 8 files changed, 38 insertions(+), 25 deletions(-)
+ 14 files changed, 93 insertions(+), 27 deletions(-)
+ create mode 100644 private/gpsd.te
 
 diff --git a/private/app.te b/private/app.te
-index b5aef1c..05cc8dc 100644
+index b5aef1c..a7340e7 100644
 --- a/private/app.te
 +++ b/private/app.te
 @@ -271,9 +271,10 @@ use_keystore({ appdomain -isolated_app -ephemeral_app })
@@ -31,6 +38,24 @@ index b5aef1c..05cc8dc 100644
  
  allow { appdomain -isolated_app } ion_device:chr_file rw_file_perms;
  # TODO is write really necessary ?
+@@ -352,6 +353,7 @@ neverallow appdomain {
+     audio_device
+     camera_device
+     dm_device
++    gps_device
+     radio_device
+     rpmsg_device
+     video_device
+@@ -433,6 +435,9 @@ neverallow appdomain system_data_file:dir_file_class_set
+ # Write to various other parts of /data.
+ neverallow appdomain drm_data_file:dir_file_class_set
+     { create write setattr relabelfrom relabelto append unlink link rename };
++neverallow { appdomain -system_app }
++    gps_data_file:dir_file_class_set
++    { create write setattr relabelfrom relabelto append unlink link rename };
+ neverallow { appdomain -platform_app }
+     apk_data_file:dir_file_class_set
+     { create write setattr relabelfrom relabelto append unlink link rename };
 diff --git a/private/app_neverallows.te b/private/app_neverallows.te
 index a8a6f68..f80da8a 100644
 --- a/private/app_neverallows.te
@@ -66,6 +91,89 @@ index a8a6f68..f80da8a 100644
  
  # Do not allow untrusted apps access to /cache
  neverallow all_untrusted_apps { cache_file cache_recovery_file }:dir ~{ r_dir_perms };
+diff --git a/private/file_contexts b/private/file_contexts
+index 4485b95..ee6be1d 100644
+--- a/private/file_contexts
++++ b/private/file_contexts
+@@ -97,6 +97,8 @@
+ /dev/loop-control	u:object_r:loop_control_device:s0
+ /dev/mem		u:object_r:kmem_device:s0
+ /dev/modem.*		u:object_r:radio_device:s0
++/dev/mpu		u:object_r:gps_device:s0
++/dev/mpuirq		u:object_r:gps_device:s0
+ /dev/mtd(/.*)?		u:object_r:mtd_device:s0
+ /dev/mtp_usb		u:object_r:mtp_device:s0
+ /dev/pmsg0		u:object_r:pmsg_device:s0
+@@ -129,6 +131,7 @@
+ /dev/socket/mdnsd	u:object_r:mdnsd_socket:s0
+ /dev/socket/mtpd	u:object_r:mtpd_socket:s0
+ /dev/socket/netd	u:object_r:netd_socket:s0
++/dev/socket/gps		u:object_r:gps_socket:s0
+ /dev/socket/pdx/system/buffer_hub	u:object_r:pdx_bufferhub_dir:s0
+ /dev/socket/pdx/system/buffer_hub/client	u:object_r:pdx_bufferhub_client_endpoint_socket:s0
+ /dev/socket/pdx/system/performance	u:object_r:pdx_performance_dir:s0
+@@ -227,6 +230,7 @@
+ /system/bin/racoon	u:object_r:racoon_exec:s0
+ /system/xbin/su		u:object_r:su_exec:s0
+ /system/xbin/perfprofd  u:object_r:perfprofd_exec:s0
++/system/vendor/bin/gpsd u:object_r:gpsd_exec:s0
+ /system/bin/dnsmasq     u:object_r:dnsmasq_exec:s0
+ /system/bin/healthd     u:object_r:healthd_exec:s0
+ /system/bin/clatd	u:object_r:clatd_exec:s0
+@@ -274,6 +278,7 @@
+ /(vendor|system/vendor)/bin/sh                 u:object_r:vendor_shell_exec:s0
+ /(vendor|system/vendor)/bin/toybox_vendor      u:object_r:vendor_toolbox_exec:s0
+ /(vendor|system/vendor)/etc(/.*)?              u:object_r:vendor_configs_file:s0
++/vendor/bin/gpsd	u:object_r:gpsd_exec:s0
+ 
+ /(vendor|system/vendor)/lib(64)?/egl(/.*)?     u:object_r:same_process_hal_file:s0
+ 
+@@ -320,6 +325,7 @@
+ /data/secure/backup(/.*)?	u:object_r:backup_data_file:s0
+ /data/system/ndebugsocket	u:object_r:system_ndebug_socket:s0
+ /data/drm(/.*)?		u:object_r:drm_data_file:s0
++/data/gps(/.*)?		u:object_r:gps_data_file:s0
+ /data/resource-cache(/.*)? u:object_r:resourcecache_data_file:s0
+ /data/dalvik-cache(/.*)? u:object_r:dalvikcache_data_file:s0
+ /data/ota(/.*)? u:object_r:ota_data_file:s0
+diff --git a/private/gpsd.te b/private/gpsd.te
+new file mode 100644
+index 0000000..cd20295
+--- /dev/null
++++ b/private/gpsd.te
+@@ -0,0 +1,32 @@
++# gpsd - GPS daemon
++type gpsd, domain;
++type gpsd_exec, exec_type, file_type;
++
++init_daemon_domain(gpsd)
++net_domain(gpsd)
++allow gpsd gps_data_file:dir rw_dir_perms;
++allow gpsd gps_data_file:notdevfile_class_set create_file_perms;
++# Socket is created by the daemon, not by init, and under /data/gps,
++# not under /dev/socket.
++type_transition gpsd gps_data_file:sock_file gps_socket;
++allow gpsd gps_socket:sock_file create_file_perms;
++# XXX Label sysfs files with a specific type?
++allow gpsd sysfs:file rw_file_perms;
++
++# TODO: added to match above sysfs rule. Remove me?
++allow gpsd sysfs_usb:file w_file_perms;
++
++allow gpsd gps_device:chr_file rw_file_perms;
++
++# Execute the shell or system commands.
++allow gpsd shell_exec:file rx_file_perms;
++allow gpsd system_file:file rx_file_perms;
++allow gpsd toolbox_exec:file rx_file_perms;
++
++###
++### neverallow
++###
++
++# gpsd can never have capabilities other than block_suspend
++neverallow gpsd self:capability *;
++neverallow gpsd self:capability2 ~block_suspend;
 diff --git a/private/priv_app.te b/private/priv_app.te
 index 065ea1a..c176b39 100644
 --- a/private/priv_app.te
@@ -81,11 +189,47 @@ index 065ea1a..c176b39 100644
  
  # Allow GMS core to communicate with update_engine for A/B update.
  binder_call(priv_app, update_engine)
+diff --git a/private/system_server.te b/private/system_server.te
+index 05e4773..b74acaf 100644
+--- a/private/system_server.te
++++ b/private/system_server.te
+@@ -156,6 +156,7 @@ unix_socket_connect(system_server, netd, netd)
+ unix_socket_connect(system_server, vold, vold)
+ unix_socket_connect(system_server, webview_zygote, webview_zygote)
+ unix_socket_connect(system_server, zygote, zygote)
++unix_socket_connect(system_server, gps, gpsd)
+ unix_socket_connect(system_server, racoon, racoon)
+ unix_socket_connect(system_server, uncrypt, uncrypt)
+ 
+@@ -640,6 +641,11 @@ allow system_server preloads_data_file:dir { r_dir_perms write remove_name rmdir
+ allow system_server preloads_media_file:file { r_file_perms unlink };
+ allow system_server preloads_media_file:dir { r_dir_perms write remove_name rmdir };
+ 
++# LocationManager(e.g, GPS) needs to read and write
++# to uart driver and ctrl proc entry
++allow system_server gps_device:chr_file rw_file_perms;
++allow system_server gps_control:file rw_file_perms;
++
+ r_dir_file(system_server, cgroup)
+ allow system_server ion_device:chr_file r_file_perms;
+ 
+diff --git a/public/device.te b/public/device.te
+index 4a3bec9..2da1e95 100644
+--- a/public/device.te
++++ b/public/device.te
+@@ -49,6 +49,7 @@ type zero_device, dev_type, mlstrustedobject;
+ type fuse_device, dev_type, mlstrustedobject;
+ type iio_device, dev_type;
+ type ion_device, dev_type, mlstrustedobject;
++type gps_device, dev_type;
+ type qtaguid_device, dev_type;
+ type watchdog_device, dev_type;
+ type uhid_device, dev_type;
 diff --git a/public/domain.te b/public/domain.te
-index 19b784b..1400e17 100644
+index 19b784b..150d7ef 100644
 --- a/public/domain.te
 +++ b/public/domain.te
-@@ -200,10 +200,13 @@ allow domain fs_type:dir getattr;
+@@ -200,11 +200,14 @@ allow domain fs_type:dir getattr;
  # defaults for all processes. Note that granting this whitelist to domain does
  # not grant the ioctl permission on these socket types. That must be granted
  # separately.
@@ -98,10 +242,26 @@ index 19b784b..1400e17 100644
 +#Revert to 29
  # default whitelist for unix sockets.
 -allowxperm domain domain:{ unix_dgram_socket unix_stream_socket }
+-  ioctl unpriv_unix_sock_ioctls;
 +#allowxperm domain domain:{ unix_dgram_socket unix_stream_socket }
-   ioctl unpriv_unix_sock_ioctls;
++#  ioctl unpriv_unix_sock_ioctls;
  
  # Restrict PTYs to only whitelisted ioctls.
+ # Note that granting this whitelist to domain does
+diff --git a/public/file.te b/public/file.te
+index 993b310..d51450a 100644
+--- a/public/file.te
++++ b/public/file.te
+@@ -51,7 +51,8 @@ type sysfs_wlan_fwpath, fs_type, sysfs_type;
+ type sysfs_vibrator, fs_type, sysfs_type;
+ 
+ type sysfs_thermal, sysfs_type, fs_type;
+-
++type gps_data_file, file_type, data_file_type;
++type gps_socket, file_type;
+ type sysfs_zram, fs_type, sysfs_type;
+ type sysfs_zram_uevent, fs_type, sysfs_type;
+ type inotify, fs_type, mlstrustedobject;
 diff --git a/public/hal_drm.te b/public/hal_drm.te
 index 5a6bf5c..c40b2a5 100644
 --- a/public/hal_drm.te
@@ -164,6 +324,20 @@ index 6efaf0f..c75c30d 100644
  # do not allow privileged socket ioctl commands
 -neverallowxperm mediaserver domain:{ rawip_socket tcp_socket udp_socket } ioctl priv_sock_ioctls;
 +#neverallowxperm mediaserver domain:{ rawip_socket tcp_socket udp_socket } ioctl priv_sock_ioctls;
+diff --git a/public/rild.te b/public/rild.te
+index 14420df..017017e 100644
+--- a/public/rild.te
++++ b/public/rild.te
+@@ -29,6 +29,9 @@ allow rild system_file:file x_file_perms;
+ # property service
+ set_prop(rild, radio_prop)
+ 
++# Read/Write to uart driver (for GPS)
++allow rild gps_device:chr_file rw_file_perms;
++
+ allow rild tty_device:chr_file rw_file_perms;
+ 
+ # Allow rild to create and use netlink sockets.
 diff --git a/public/shell.te b/public/shell.te
 index 1fb896a..1ccb75d 100644
 --- a/public/shell.te
