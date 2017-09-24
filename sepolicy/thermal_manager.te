@@ -1,5 +1,5 @@
 type thermal_manager_exec, exec_type, file_type;
-type thermal_manager, domain;
+type thermal_manager, domain, domain_deprecated;
 
 init_daemon_domain(thermal_manager)
 
