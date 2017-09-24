@@ -137,16 +137,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.kernel.android.checkjni=0 \
-    ro.telephony.ril.config=fakeiccid  \
-    persist.call_recording.enabled=true \
-    persist.call_recording.src=1 
-
-# Optimal dex2oat threads for faster app installation
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.fw.dex2oat_thread_count=4
-
 # ConsumerIR
 PRODUCT_PACKAGES += \
     consumerir.default \

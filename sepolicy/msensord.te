@@ -7,7 +7,7 @@
 # ==============================================
 
 type msensord_exec , exec_type, file_type;
-type msensord ,domain, domain_deprecated;
+type msensord ,domain, coredomain;
 
 # ==============================================
 # Android Policy Rule

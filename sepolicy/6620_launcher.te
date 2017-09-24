@@ -1,5 +1,5 @@
 type mtk_6620_launcher_exec, exec_type, file_type;
-type mtk_6620_launcher, domain, domain_deprecated;
+type mtk_6620_launcher, domain, coredomain;
 
 init_daemon_domain(mtk_6620_launcher)
 

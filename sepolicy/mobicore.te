@@ -5,7 +5,7 @@
 # ==============================================
 # Type Declaration
 # ==============================================
-type mobicore, domain, domain_deprecated;
+type mobicore, domain, coredomain;
 type mobicore_exec, exec_type, file_type;
 type mobicore_admin_device, dev_type;
 type mobicore_user_device, dev_type;

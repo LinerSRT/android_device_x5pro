@@ -23,19 +23,6 @@ TARGET_CPU_MEMCPY_OPT_DISABLE := true
 # Legacy blobs
 TARGET_NEEDS_TEXT_RELOCATIONS := true 
 
-# For Google
-PRODUCT_PROPERTY_OVERRIDES += \
-keyguard.no_require_sim=true \
-ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
-ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
-ro.com.google.clientidbase=android-google \
-ro.com.android.wifi-watchlist=GoogleGuest \
-ro.error.receiver.system.apps=com.google.android.gms \
-ro.setupwizard.enterprise_mode=1 \
-ro.com.android.dataroaming=false \
-net.tethering.noprovisioning=true \
-ro.setupwizard.rotation_locked=true
-
 # For MTK New Symbols
 TARGET_INCLUDE_XLOG_SYMBOLS := true
 TARGET_INCLUDE_AUDIO_SYMBOLS := true
@@ -53,8 +40,8 @@ TARGET_SYSTEM_PROP := device/doogee/x5pro/system.prop
 TARGET_BOOTANIMATION_HALF_RES := true
 
 #Sepolicy
-BOARD_SEPOLICY_DIRS := \
-       device/doogee/x5pro/sepolicy
+#BOARD_SEPOLICY_DIRS := \
+#       device/doogee/x5pro/sepolicy
 
 # Seccomp Filter
 BOARD_SECCOMP_POLICY := \
