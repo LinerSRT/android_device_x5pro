@@ -44,10 +44,10 @@ TARGET_BOOTANIMATION_HALF_RES := true
 #       device/doogee/x5pro/sepolicy
 
 # Seccomp Filter
-BOARD_SECCOMP_POLICY := \
-       device/doogee/x5pro/seccomp
+#BOARD_SECCOMP_POLICY := \
+#       device/doogee/x5pro/seccomp
 
-BOARD_SEPOLICY_VERS := 30
+#BOARD_SEPOLICY_VERS := 30
 
 #Other
 BLOCK_BASED_OTA := false
