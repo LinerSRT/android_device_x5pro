@@ -16,7 +16,7 @@ Bugs:
 See **Issues**
 
 For add tree to project:
- > ``` git clone -b oreo-8.0 https://github.com/SeriniTY320/android_device_x5pro device/doogee/x5pro && git clone https://github.com/SeriniTY320/android_vendor_x5pro.git vendor/doogee/x5pro ```
+ > ``` git clone -b LS15 https://github.com/SeriniTY320/android_device_x5pro device/doogee/x5pro && git clone https://github.com/SeriniTY320/android_vendor_x5pro.git vendor/doogee/x5pro ```
  
 ### Progress:
 - [x] Patch tree for Oreo
