@@ -48,7 +48,12 @@ LINKER_FORCED_SHIM_LIBS := /system/bin/guiext-server|libxlog.so
 LINKER_FORCED_SHIM_LIBS := /system/bin/pq|libxlog.so
 LINKER_FORCED_SHIM_LIBS := /system/lib/egl/libGLES_mali.so|libxlog.so
 LINKER_FORCED_SHIM_LIBS := /system/lib/libfmcust.so|libxlog.so
-
+LINKER_FORCED_SHIM_LIBS := /system/lib/libgui_ext.so|libmtk_shyms.so
+LINKER_FORCED_SHIM_LIBS := /system/lib/libgui_ext.so|libmtk_symbols.so
+LINKER_FORCED_SHIM_LIBS := /system/lib/libcam_utils.so|libmtk_shyms.so
+LINKER_FORCED_SHIM_LIBS := /system/bin/mtk_agpsd|libmtk_symbols.so
+LINKER_FORCED_SHIM_LIBS := /system/bin/guiext-server|libmtk_shyms.so
+LINKER_FORCED_SHIM_LIBS := /system/bin/program_binary_service|libmtk_shyms.so    
 LINKER_FORCED_SHIM_LIBS := /system/lib/liblog.so|libmtkshim_log.so
 LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/lib/hw/audio.primary.$(TARGET_BOARD_PLATFORM).so|libmtkshim_audio.so
 LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/lib/libui.so|libmtkshim_ui.so
@@ -61,19 +66,31 @@ PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-impl
 
 # Audio
+#PRODUCT_PACKAGES += \
+#    audio.a2dp.default \
+#    audio.usb.default \
+#    audio.r_submix.default \
+#    audio_policy.default \
+#    libaudio-resampler \
+#    libaudiopolicymanagerdefault \
+#    libtinyalsa \
+#    libtinycompress \
+#    libtinyxml \
+#    audio_policy.stub \
+#    libtinymix \
+#    libfs_mgr
+
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio.usb.default \
     audio.r_submix.default \
-    audio_policy.default \
-    libaudio-resampler \
+    audio.usb.default \
+    audio_policy.stub \
     libaudiopolicymanagerdefault \
+    libaudio-resampler \
+    libaudiosetting \
     libtinyalsa \
     libtinycompress \
-    libtinyxml \
-    audio_policy.stub \
     libtinymix \
-    libfs_mgr
+    libtinyxml
 
 # Audio HIDL HAL
 PRODUCT_PACKAGES += \

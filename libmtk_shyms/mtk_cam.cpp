@@ -12,3 +12,6 @@ void _ZN14CustParameters7mPQCustE () {
 void _ZNK7android14ICameraService22getInterfaceDescriptorEv () {
   
 }
+void _ZN7android13GraphicBufferC1Ejjij () {
+  
+}
