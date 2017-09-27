@@ -61,19 +61,31 @@ PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-impl
 
 # Audio
+#PRODUCT_PACKAGES += \
+#    audio.a2dp.default \
+#    audio.usb.default \
+#    audio.r_submix.default \
+#    audio_policy.default \
+#    libaudio-resampler \
+#    libaudiopolicymanagerdefault \
+#    libtinyalsa \
+#    libtinycompress \
+#    libtinyxml \
+#    audio_policy.stub \
+#    libtinymix \
+#    libfs_mgr
+
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio.usb.default \
     audio.r_submix.default \
-    audio_policy.default \
-    libaudio-resampler \
+    audio.usb.default \
+    audio_policy.stub \
     libaudiopolicymanagerdefault \
+    libaudio-resampler \
+    libaudiosetting \
     libtinyalsa \
     libtinycompress \
-    libtinyxml \
-    audio_policy.stub \
     libtinymix \
-    libfs_mgr
+    libtinyxml
 
 # Audio HIDL HAL
 PRODUCT_PACKAGES += \
