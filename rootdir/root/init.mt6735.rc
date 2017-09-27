@@ -16,9 +16,9 @@ import init.target.rc
 # import init.srt.rc
 
 on init
-    export LD_PRELOAD "libmtk_symbols.so"
-    export LD_PRELOAD "libmtk_shyms.so"
-    export LD_PRELOAD "libxlog.so"
+    export LD_PRELOAD "libmtk_symbols.so libmtk_shyms.so libxlog.so"
+   # export LD_PRELOAD "libmtk_shyms.so"
+   # export LD_PRELOAD "libxlog.so"
     export LD_SHIM_LIBS /system/libdpframework.so|libmtk_shyms.so
     export LD_SHIM_LIBS /system/bin/sn|libmtk_shyms.so
     export LD_SHIM_LIBS /system/bin/MtkCodecService|libxlog.so
