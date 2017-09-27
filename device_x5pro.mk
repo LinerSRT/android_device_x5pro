@@ -21,7 +21,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/rootdir/system/etc/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
+	$(LOCAL_PATH)/rootdir/system/etc/audio_policy_volumes_drc.xml:system/etc/audio_policy_volumes_drc.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
@@ -56,12 +57,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/root/fstab.mt6735:root/fstab.mt6735 \
     $(LOCAL_PATH)/rootdir/root/init.mt6735.rc:root/init.mt6735.rc \
+    $(LOCAL_PATH)/rootdir/system/etc/init/hw/init.mt6735.rc:system/vendor/etc/init/hw/init.mt6735.rc \
     $(LOCAL_PATH)/rootdir/root/init.modem.rc:root/init.modem.rc \
     $(LOCAL_PATH)/rootdir/root/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
     $(LOCAL_PATH)/rootdir/root/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
     $(LOCAL_PATH)/rootdir/root/twrp.fstab:recovery/root/etc/twrp.fstab \
     $(LOCAL_PATH)/rootdir/root/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
     $(LOCAL_PATH)/rootdir/root/init.project.rc:root/init.project.rc \
+    $(LOCAL_PATH)/rootdir/root/init.srt.rc:root/init.srt.rc \
     $(LOCAL_KERNEL):kernel
 
 # Permissions
@@ -81,7 +84,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/system/etc/permissions/android.hardware.camera.xml:system/etc/permissions/android.hardware.camera.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     $(LOCAL_PATH)/rootdir/system/etc/permissions/android.hardware.microphone.xml:system/etc/permissions/android.hardware.microphone.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml 
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    $(LOCAL_PATH)/rootdir/system/etc/seccomp_policy/mediaextractor.policy:system/vendor/etc/seccomp_policy/mediaextractor.policy \
+         $(LOCAL_PATH)/rootdir/system/etc/seccomp_policy/mediaextractor.policy:system/etc/seccomp_policy/mediaextractor.policy
 
 # USB
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \

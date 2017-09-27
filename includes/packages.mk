@@ -127,7 +127,8 @@ PRODUCT_PACKAGES += \
     hostapd_cli \
     dhcpcd.conf \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    wificong
 
 # WiFi HIDL HAL
 PRODUCT_PACKAGES += \

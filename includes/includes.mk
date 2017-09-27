@@ -37,7 +37,9 @@ DEVICE_MANIFEST_FILE := device/doogee/x5pro/manifest.xml
 TARGET_SYSTEM_PROP := device/doogee/x5pro/system.prop
 
 # faster Bootanimation
-TARGET_BOOTANIMATION_HALF_RES := true
+#TARGET_BOOTANIMATION_HALF_RES := true
+
+USE_XML_AUDIO_POLICY_CONF := 1
 
 #Sepolicy
 #BOARD_SEPOLICY_DIRS := \
