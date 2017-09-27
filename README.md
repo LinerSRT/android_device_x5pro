@@ -12,16 +12,19 @@
  | OS:            | 8.0, x32           |
  | Shipped OS:    | 5.1, 6.0 (x32)       |
  
- Баги и недочеты:
- + Висит на логотипе. Stuck on logo (see ussies)
- 
- Что работает:
- + Неизвестно
- 
- Что бы добавить дерево и вендор в проект введите:
+Bugs: 
+See **Issues**
+
+For add tree to project:
  > ``` git clone -b oreo-8.0 https://github.com/SeriniTY320/android_device_x5pro device/doogee/x5pro && git clone https://github.com/SeriniTY320/android_vendor_x5pro.git vendor/doogee/x5pro ```
  
- Перед ```git clone``` нужно указать бранч, к примеру ```-b LS14.1``` - скачает дерево под LineageOS 14.1
- 
- Внимание! Перед сборкой необходимо применить патчи!
- > ` cd devices/doogee/x5pro/patches && ./check-patches.sh && ./apply-patches.sh `
+### Progress:
+- [x] Patch tree for Oreo
+- [x] Successful Build
+- [x] Patch kernel binder
+- [ ] Bootup:
+   - [ ] Fix all errors
+   - [x] Fix rebooting to fastboot
+- [ ] Bugfixes
+- [ ] Release
+
