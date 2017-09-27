@@ -24,9 +24,8 @@ PRODUCT_PACKAGES += \
     libxlog
 
 PRODUCT_PACKAGES += \
-    mrdump
+    libmrdump
     
-
 #MTK Symbols
 PRODUCT_PACKAGES += \
     libmtk_symbols \
@@ -41,7 +40,15 @@ PRODUCT_PACKAGES += \
    libmtkshim_omx \
    libmtkshim_gps
 
-# Include symbols
+# Include symbols for OREO
+LINKER_FORCED_SHIM_LIBS := /system/libdpframework.so|libmtk_shyms.so
+LINKER_FORCED_SHIM_LIBS := /system/bin/sn|libmtk_shyms.so
+LINKER_FORCED_SHIM_LIBS := /system/bin/MtkCodecService|libxlog.so
+LINKER_FORCED_SHIM_LIBS := /system/bin/guiext-server|libxlog.so
+LINKER_FORCED_SHIM_LIBS := /system/bin/pq|libxlog.so
+LINKER_FORCED_SHIM_LIBS := /system/lib/egl/libGLES_mali.so|libxlog.so
+LINKER_FORCED_SHIM_LIBS := /system/lib/libfmcust.so|libxlog.so
+
 LINKER_FORCED_SHIM_LIBS := /system/lib/liblog.so|libmtkshim_log.so
 LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/lib/hw/audio.primary.$(TARGET_BOARD_PLATFORM).so|libmtkshim_audio.so
 LINKER_FORCED_SHIM_LIBS := $(LINKER_FORCED_SHIM_LIBS):/system/lib/libui.so|libmtkshim_ui.so
