@@ -3,10 +3,15 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <pthread.h>
+//#include <binder/Parcel.h>
+#include <fcntl.h>
 #include <utils/Log.h>
-#include <hardware/power.h>
-#include <hardware/hardware.h>
+#include <binder/IInterface.h>
+#include <binder/Binder.h>
+#include <fcntl.h>
 
+extern "C" {
 void _ZN7android21IProgramBinaryService10descriptorE () {
 
+}
 }

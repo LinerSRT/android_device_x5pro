@@ -26,8 +26,8 @@ on init
     export LD_SHIM_LIBS /system/bin/pq|libxlog.so
     export LD_SHIM_LIBS /system/lib/egl/libGLES_mali.so|libxlog.so
     export LD_SHIM_LIBS /system/lib/libfmcust.so|libxlog.so
-    export LD_SHIM_LIBS /system/lib/libgui_ext.so|libmtk_shyms.so
-    export LD_SHIM_LIBS /system/lib/libgui_ext.so|libmtk_symbols.so
+#    export LD_SHIM_LIBS /system/lib/libgui_ext.so|libmtk_shyms.so
+#    export LD_SHIM_LIBS /system/lib/libgui_ext.so|libmtk_symbols.so
     export LD_SHIM_LIBS /system/lib/libcam_utils.so|libmtk_shyms.so
     export LD_SHIM_LIBS /system/bin/mtk_agpsd|libmtk_symbols.so
     export LD_SHIM_LIBS /system/bin/guiext-server|libmtk_shyms.so

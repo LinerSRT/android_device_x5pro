@@ -8,8 +8,14 @@ LOCAL_SRC_FILES := \
     mtk_audio.cpp
 
 
-LOCAL_SHARED_LIBRARIES := libdpframework
+LOCAL_SHARED_LIBRARIES := libdpframework 
 LOCAL_MODULE := libmtk_shyms
 LOCAL_MODULE_TAGS := optional
-
+LOCAL_CLANG := true
+LOCAL_CPPFLAGS := -std=c++1y 
+LOCAL_CPPFLAGS += -Wno-exit-time-destructors
+LOCAL_CPPFLAGS += -Wno-global-constructors
+LOCAL_CPPFLAGS += -Wno-c++98-compat-pedantic
+LOCAL_CPPFLAGS += -Wno-four-char-constants
+LOCAL_CPPFLAGS += -Wno-padded
 include $(BUILD_SHARED_LIBRARY)
