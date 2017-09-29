@@ -47,6 +47,11 @@
 # Trusty driver
 /dev/trusty-ipc-dev0      0660   system     keystore
 
+# TrustonicTEE driver
+/dev/mobicore             0600   system     system
+/dev/mobicore-user        0666   system     system
+/dev/t-base-tui           0666   system     system
+
 # add the read write right of ttyUSB*
 /dev/bus/usb/*     	  0660   root       usb
 /dev/ttyUSB0              0660   radio      radio
@@ -57,7 +62,6 @@
 
 # Anyone can read the logs, but if they're not in the "logs"
 # group, then they'll only see log entries for their UID.
-/dev/xLog                 0600   root       root
 /dev/log/ksystem          0600   root       log
 
 /dev/ccci*                0660   radio      radio

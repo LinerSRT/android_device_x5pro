@@ -55,17 +55,37 @@ PRODUCT_COPY_FILES += \
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/root/fstab.mt6735:root/fstab.mt6735 \
-    $(LOCAL_PATH)/rootdir/root/init.mt6735.rc:root/init.mt6735.rc \
-    $(LOCAL_PATH)/rootdir/system/etc/init/hw/init.mt6735.rc:system/vendor/etc/init/hw/init.mt6735.rc \
-    $(LOCAL_PATH)/rootdir/root/init.modem.rc:root/init.modem.rc \
-    $(LOCAL_PATH)/rootdir/root/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
-    $(LOCAL_PATH)/rootdir/root/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
-    $(LOCAL_PATH)/rootdir/root/twrp.fstab:recovery/root/etc/twrp.fstab \
-    $(LOCAL_PATH)/rootdir/root/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
-    $(LOCAL_PATH)/rootdir/root/init.project.rc:root/init.project.rc \
-    $(LOCAL_PATH)/rootdir/root/init.srt.rc:root/init.srt.rc \
-    $(LOCAL_KERNEL):kernel
+ $(LOCAL_PATH)/rootdir/root/init.usb.configfs.rc:root/init.usb.configfs.rc \
+ $(LOCAL_PATH)/rootdir/root/init.recovery.service.rc:root/init.recovery.service.rc \
+ $(LOCAL_PATH)/rootdir/root/init.aee.rc:root/init.aee.rc \
+ $(LOCAL_PATH)/rootdir/root/init.volte.rc:root/init.volte.rc \
+ $(LOCAL_PATH)/rootdir/root/init.common_svc.rc:root/init.common_svc.rc \
+ $(LOCAL_PATH)/rootdir/root/twrp.fstab:root/twrp.fstab \
+ $(LOCAL_PATH)/rootdir/root/init.mt6735.usb.rc:root/init.mt6735.usb.rc \
+ $(LOCAL_PATH)/rootdir/root/init.usb.rc:root/init.usb.rc \
+ $(LOCAL_PATH)/rootdir/root/factory_init.project.rc:root/factory_init.project.rc \
+ $(LOCAL_PATH)/rootdir/root/init.srt.rc:root/init.srt.rc \
+ $(LOCAL_PATH)/rootdir/root/recovery.fstab:root/recovery.fstab \
+ $(LOCAL_PATH)/rootdir/root/ueventd.mt6735.rc:root/ueventd.mt6735.rc \
+ $(LOCAL_PATH)/rootdir/root/init.recovery.mt6735.rc:root/init.recovery.mt6735.rc \
+ $(LOCAL_PATH)/rootdir/root/init.rilproxy.rc:root/init.rilproxy.rc \
+ $(LOCAL_PATH)/rootdir/root/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
+ $(LOCAL_PATH)/rootdir/root/meta_init.modem.rc:root/meta_init.modem.rc \
+ $(LOCAL_PATH)/rootdir/root/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
+ $(LOCAL_PATH)/rootdir/root/factory_init.usb.rc:root/factory_init.usb.rc \
+ $(LOCAL_PATH)/rootdir/root/multi_init.rc:root/multi_init.rc \
+ $(LOCAL_PATH)/rootdir/root/init.project.rc:root/init.project.rc \
+ $(LOCAL_PATH)/rootdir/root/init.recovery.usb.rc:root/init.recovery.usb.rc \
+ $(LOCAL_PATH)/rootdir/root/init.zygote32.rc:root/init.zygote32.rc \
+ $(LOCAL_PATH)/rootdir/root/factory_init.rc:root/factory_init.rc \
+ $(LOCAL_PATH)/rootdir/root/meta_init.project.rc:root/meta_init.project.rc \
+ $(LOCAL_PATH)/rootdir/root/init.mt6735.rc:root/init.mt6735.rc \
+ $(LOCAL_PATH)/rootdir/root/fstab.mt6735:root/fstab.mt6735 \
+ $(LOCAL_PATH)/rootdir/root/init.environ.rc:root/init.environ.rc \
+ $(LOCAL_PATH)/rootdir/root/init.connectivity.rc:root/init.connectivity.rc \
+ $(LOCAL_PATH)/rootdir/root/init.modem.rc:root/init.modem.rc \
+ $(LOCAL_PATH)/rootdir/root/init.epdg.rc:root/init.epdg.rc \
+ $(LOCAL_PATH)/rootdir/system/etc/init/hw/init.mt6735.rc:system/vendor/etc/init/hw/init.mt6735.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
