@@ -1,0 +1,11 @@
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+# System Server Services
+
+# Other Services
+NvRAMAgent          u:object_r:nvram_agent_service:s0
+memory_dumper       u:object_r:mediaserver_service:s0
+mtk.codecservice    u:object_r:mtk_codec_service_service:s0
+

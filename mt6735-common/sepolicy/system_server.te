@@ -1,0 +1,125 @@
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+# Access devices.
+allow system_server touch_device:chr_file rw_file_perms;
+allow system_server stpant_device:chr_file rw_file_perms;
+allow system_server devmap_device:chr_file r_file_perms;
+allow system_server irtx_device:chr_file rw_file_perms;
+allow system_server qemu_pipe_device:chr_file rw_file_perms;
+allow system_server wmtWifi_device:chr_file w_file_perms;
+
+# Access sensor common devices
+allow system_server m_batch_misc_device:chr_file r_file_perms;
+allow system_server hwmsensor_device:chr_file r_file_perms;
+
+# Access sensor bio devices
+allow system_server m_als_misc_device:chr_file rw_file_perms;
+allow system_server m_baro_misc_device:chr_file rw_file_perms;
+allow system_server m_hmdy_misc_device:chr_file rw_file_perms;
+allow system_server m_ps_misc_device:chr_file rw_file_perms;
+allow system_server m_acc_misc_device:chr_file rw_file_perms;
+allow system_server m_mag_misc_device:chr_file rw_file_perms;
+allow system_server m_gyro_misc_device:chr_file rw_file_perms;
+allow system_server m_act_misc_device:chr_file rw_file_perms;
+allow system_server m_pedo_misc_device:chr_file rw_file_perms;
+allow system_server m_ges_misc_device:chr_file rw_file_perms;
+allow system_server m_step_c_misc_device:chr_file rw_file_perms;
+allow system_server m_tilt_misc_device:chr_file rw_file_perms;
+allow system_server m_fusion_misc_device:chr_file rw_file_perms;
+
+# Access mtk sensor setting and calibration node.
+allow system_server sensor_data_file:file create_file_perms;
+allow system_server sensor_data_file:dir rw_dir_perms;
+
+# Access mtk gps devices.
+allow system_server gps_data_file:file create_file_perms;
+allow system_server gps_data_file:dir rw_dir_perms;
+
+# /proc access.
+allow system_server proc:file w_file_perms;
+
+# /data/dontpanic access.
+allow system_server dontpanic_data_file:dir search;
+
+# /data/agps_supl access.
+allow system_server agpsd_data_file:dir r_dir_perms;
+
+# /data/core access.
+allow system_server aee_core_data_file:dir r_dir_perms;
+
+# /sys/kernel/debug/ion/clients access
+allow system_server debugfs:dir r_dir_perms;
+
+# Perform Binder IPC.
+binder_call(system_server,debuggerd)
+allow system_server zygote:binder impersonate;
+
+# Property service.
+allow system_server ctl_bootanim_prop:property_service set;
+
+# After connected to DHCPv6, enabled 6to4 IPv6 AP to get property.
+allow system_server proc_net:file w_file_perms;
+r_dir_file(system_server, wide_dhcpv6_data_file)
+
+# For dumpsys.
+allow system_server aee_dumpsys_data_file:file w_file_perms;
+allow system_server aee_exp_data_file:file w_file_perms;
+
+# Dump native process backtrace.
+allow system_server exec_type:file r_file_perms;
+
+# Querying zygote socket.
+allow system_server zygote:unix_stream_socket { getopt getattr };
+
+# For WiFi framework to communicate with hostapd over socket,
+# send command and get information for hotspot manager functionality.
+allow system_server wpa_wlan0_socket:sock_file w_file_perms;
+allow system_server hostapd:unix_dgram_socket sendto;
+allow hostapd system_server:unix_dgram_socket sendto;
+
+# Communicate over a socket created by mnld process.
+allow system_server debuggerd:fd use;
+allow system_server mnld_data_file:sock_file create_file_perms;
+allow system_server mnld_data_file:sock_file rw_file_perms;
+allow system_server mnld_data_file:dir create_file_perms;
+allow system_server mnld_data_file:dir rw_dir_perms;
+allow system_server mnld:unix_dgram_socket sendto;
+
+# For MPE debug and socket connection.
+allow system_server MPED_data_file:sock_file create_file_perms;
+allow system_server MPED_data_file:sock_file rw_file_perms;
+allow system_server MPED_data_file:dir create_file_perms;
+allow system_server MPED_data_file:dir rw_dir_perms;
+allow system_server MPED:unix_dgram_socket sendto;
+allow system_server MPED:unix_stream_socket { getopt getattr };
+binder_call(system_server, MPED)
+
+# For mtkFlpDaemon debug and socket connection.
+allow system_server mtkFlpDaemon:unix_dgram_socket sendto;
+allow system_server mtkFlpDaemon:unix_stream_socket { getopt getattr connectto };
+allow system_server mtkFlpDaemon_data_file:sock_file create_file_perms;
+allow system_server mtkFlpDaemon_data_file:sock_file rw_file_perms;
+allow system_server mtkFlpDaemon_data_file:dir create_file_perms;
+allow system_server mtkFlpDaemon_data_file:dir rw_dir_perms;
+
+# Purpose: allow debuggerd to do dumpsys
+allow system_server debuggerd:fifo_file write;
+
+# Allow system_server to read /sys/kernel/debug/wakeup_sources
+allow system_server debugfs_wakeup_sources:file r_file_perms;
+
+# Allow system_server to read/write /sys/power/dcm_state
+allow system_server sysfs_dcm:file rw_file_perms;
+
+# Date : WK16.33
+# Purpose: Allow to access ged for gralloc_extra functions
+allow system_server proc_ged:file {open read write ioctl getattr};
+
+# Date : WK16.36
+# Purpose: Allow to set property log.tag.WifiHW to control log level of WifiHW
+allow system_server log_tag_prop:property_service set;
+
+# new
+allow system_server dex2oat_exec:file execute;
+allow system_server dex2oat_exec:file execute_no_trans;

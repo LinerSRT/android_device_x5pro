@@ -1,4 +1,5 @@
-# Use this to add x5pro to CM's lunch command menu
+# lunch
+
 for var in eng user userdebug; do
-  add_lunch_combo lineage_x5pro-$var
+  add_lunch_combo full_x5pro-$var
 done

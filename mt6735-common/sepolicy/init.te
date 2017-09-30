@@ -1,0 +1,86 @@
+# ==============================================
+# MTK Policy Rule
+# ============
+
+# Date : WK14.34
+# Operation : Migration
+# Purpose : for L early bring up: add for nvram command in init rc files
+allow init nvram_data_file:dir create_dir_perms;
+allow init nvram_data_file:lnk_file r_file_perms;
+allow init nvdata_file:dir create_file_perms;
+
+#============= init ==============
+# Date : W14.42
+# Operation : Migration
+# Purpose : for L : add for partition (chown/chmod)
+allow init block_device:blk_file setattr;
+allow init system_block_device:blk_file setattr;
+allow init nvram_device:blk_file setattr;
+allow init seccfg_block_device:blk_file setattr;
+allow init secro_block_device:blk_file setattr;
+allow init frp_block_device:blk_file setattr;
+allow init logo_block_device:blk_file setattr;
+allow init para_block_device:blk_file setattr;
+allow init recovery_block_device:blk_file setattr;
+
+# Date : WK15.30
+# Operation : Migration
+# Purpose : format wiped partition with "formattable" and "check" flag in fstab file
+allow init protect1_block_device:blk_file rw_file_perms;
+allow init protect2_block_device:blk_file rw_file_perms;
+allow init userdata_block_device:blk_file rw_file_perms;
+allow init cache_block_device:blk_file rw_file_perms;
+allow init nvdata_device:blk_file w_file_perms;
+allow init persist_block_device:blk_file rw_file_perms;
+allow init nvcfg_block_device:blk_file rw_file_perms;
+allow init odm_block_device:blk_file rw_file_perms;
+allow init oem_block_device:blk_file rw_file_perms;
+allow init para_block_device:blk_file w_file_perms;
+
+# Date : WK15.32
+# Operation : Migration
+# Purpose : disable AT_SECURE for LD_PRELOAD
+userdebug_or_eng(`
+  allow init { domain -lmkd }:process noatsecure;
+')
+
+# Date : WK16.26
+# Operation : Access dynamic_debug control file
+# Purpose : For MobileLog on/off pr_debug on user/userdebug load
+allow init debugfs_dynamic_debug:file write;
+
+# Date : W16.28
+# Operation : Migration
+# Purpose : enable modules capability
+allow init self:capability sys_module;
+allow init kernel:system module_request;
+
+# new
+allow init debugfs:file write;
+allow init default_android_service:service_manager add;
+allow init fuse:dir add_name;
+allow init fuse:dir open;
+allow init fuse:dir read;
+allow init fuse:dir remove_name;
+allow init fuse:dir search;
+allow init fuse:dir write;
+allow init fuse:file append;
+allow init fuse:file create;
+allow init fuse:file getattr;
+allow init fuse:file open;
+allow init fuse:file read;
+allow init fuse:file unlink;
+allow init graphics_device:chr_file ioctl;
+allow init init:netlink_socket bind;
+allow init init:netlink_socket create;
+allow init init:netlink_socket read;
+allow init init:netlink_socket setopt;
+allow init init:netlink_socket write;
+allow init mnt_user_file:lnk_file read;
+allow init servicemanager:binder call;
+allow init servicemanager:binder transfer;
+allow init storage_file:lnk_file read;
+allow init stpwmt_device:chr_file write;
+allow init system_data_file:sock_file write;
+allow init system_file:file execute_no_trans;
+allow init tmpfs:lnk_file create;

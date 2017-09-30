@@ -1,0 +1,25 @@
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+typeattribute system_app mlstrustedsubject;
+
+# Date : 2014/07/31
+# Stage: BaseUT
+# Purpose :[CdsInfo][CdsInfo uses net shell commands to get network information and write WI-FI MAC address by NVRAM]
+# Package Name: com.mediatek.connectivity
+allow system_app nvram_agent_binder:binder call;
+
+# Date : 2016/07/01
+# Purpose : Gain permission to system apps to create folder
+allow system_app media_rw_data_file:dir create;
+
+# Date : 2016/07/07
+# Purpose : Gain permission to system apps to append file for tool testing
+userdebug_or_eng(`
+allow system_app media_rw_data_file:file append;
+')
+
+# Date : 2016/07/12
+# Purpose : Issue submitter need creat folder on SD card
+allow system_app vfat:dir create;

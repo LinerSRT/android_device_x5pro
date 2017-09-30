@@ -1,0 +1,10 @@
+# ============================================== 
+# MTK Policy Rule 
+# ==============================================
+
+# Access /dev/stpbt
+allow bluetooth stpbt_device:chr_file rw_file_perms;
+
+# Access NVRAM
+allow bluetooth nvdata_file:dir search;
+allow bluetooth nvdata_file:file rw_file_perms;

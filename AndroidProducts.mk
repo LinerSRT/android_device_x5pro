@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/device_x5pro.mk
+    $(LOCAL_DIR)/full_x5pro.mk

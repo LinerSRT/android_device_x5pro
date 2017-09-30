@@ -1,0 +1,44 @@
+From 93d122d6ef47cffa4405a438e3b71b8f0779a029 Mon Sep 17 00:00:00 2001
+From: aleha-druga <aleha.druga@gmail.com>
+Date: Wed, 27 Sep 2017 12:34:11 +0000
+Subject: [PATCH] key_patch
+
+Change-Id: I030049e7fb92bbdeeea3017c789635db9c821307
+---
+ data/keyboards/Generic.kl | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/data/keyboards/Generic.kl b/data/keyboards/Generic.kl
+index 2a10bdd..3321542 100644
+--- a/data/keyboards/Generic.kl
++++ b/data/keyboards/Generic.kl
+@@ -177,7 +177,7 @@ key 152   POWER
+ key 155   ENVELOPE
+ key 156   BOOKMARK
+ # key 157 "KEY_COMPUTER"
+-key 158   BACK
++key 158   BACK	VIRTUAL
+ key 159   FORWARD
+ key 160   MEDIA_CLOSE
+ key 161   MEDIA_EJECT
+@@ -191,7 +191,7 @@ key 168   MEDIA_REWIND
+ key 169   CALL
+ # key 170 "KEY_ISO"
+ key 171   MUSIC
+-key 172   HOME
++key 172   HOME	VIRTUAL
+ # key 173 "KEY_REFRESH"
+ # key 174 "KEY_EXIT"
+ # key 175 "KEY_MOVE"
+@@ -404,7 +404,7 @@ key 484   B                 FUNCTION
+ # key 503 KEY_BRL_DOT7
+ # key 504 KEY_BRL_DOT8
+ 
+-key 580   APP_SWITCH
++key 187   APP_SWITCH	VIRTUAL
+ key 582   VOICE_ASSIST
+ 
+ # Keys defined by HID usages
+-- 
+1.9.1
+

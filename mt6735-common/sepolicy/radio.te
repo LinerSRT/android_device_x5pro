@@ -1,0 +1,135 @@
+# ==============================================
+# MTK Policy Rule
+# ============
+
+allow radio rild2_socket:sock_file write;
+
+# Date : WK14.36
+# Operation : Migration
+# Purpose : for mtkrild and viarild
+allow radio mtkrild:unix_stream_socket connectto;
+allow radio rilproxy:unix_stream_socket connectto;
+
+# Date : 2014/10/13
+# Operation : IT
+# Purpose : mtk_agpsd establishes the local socket as agpsd for all A-GPS
+# application to do something with mtk_agpsd
+unix_socket_connect(radio, agpsd, mtk_agpsd)
+
+# Purpose : allow to access kpd driver file
+allow radio sysfs_keypad_file:dir { w_dir_perms };
+allow radio sysfs_keypad_file:file { w_file_perms };
+
+# Date : WK15.34 2015/08/21
+# Operation : IT
+# Purpose : for engineermode WFD IOT property
+allow radio surfaceflinger:fifo_file { rw_file_perms };
+
+# Date : WK16.14 2016/03/30
+# Operation : IT
+# Purpose : for engineermode camera app mode
+allow radio mtk_em_prop:property_service set;
+
+# Date : WK16.24 2016/06/10
+# Operation : Migration
+# Purpose : for engineermode camera app mode
+allow radio cameraserver_service:service_manager find;
+
+# Date : 2016/06/11
+# Operation : IT
+# Purpose : for engineermode Usb PHY Tuning
+allow radio debugfs_usb20_phy:file { read open getattr };
+allow radio debugfs_usb20_phy:dir search;
+
+# Date : 2016/06/28
+# Operation : IT
+# Purpose : for engineermode sensor can work normal
+allow radio als_ps_device:chr_file { read open ioctl };
+
+# Date : WK14.38 2016/06/28
+# Operation : Migration
+# Purpose : for engineermode
+allow radio mediatek_prop:property_service set;
+allow radio mt_otg_test_device:chr_file { read write ioctl open };
+allow radio mtgpio_device:chr_file { read ioctl open };
+allow radio stpbt_device:chr_file { read write open };
+allow radio stpant_device:chr_file { read write open };
+allow radio bt_int_adp_socket:sock_file write;
+allow radio persist_ril_prop:property_service set;
+allow radio mt6605_device:chr_file { read write ioctl open getattr };
+allow radio nfc_socket:dir { write add_name remove_name search };
+allow radio nfc_socket:sock_file { create write unlink setattr };
+allow radio system_prop:property_service set;
+
+# Date : WK14.38 2016/06/28
+# Operation : Migration
+# Purpose : for engineermode
+allow radio em_svr:unix_stream_socket connectto;
+
+# Date : WK15.25 2016/06/28
+# Operation :N Migration
+# Purpose : for engineermode WiFi test mode
+# todo: in the feature Google maybe forbid this option,we should use other way
+allowxperm radio self:udp_socket ioctl { SIOCIWFIRSTPRIV-SIOCIWFIRSTPRIV_09 SIOCIWFIRSTPRIV_0B SIOCSIWESSID SIOCSIWMODE };
+
+# Date : 2014/12/13
+# Operation : IT
+# Purpose : for bluetooth relayer mode
+allow radio block_device:dir search;
+allow radio ttyGS_device:chr_file { open read write ioctl };
+
+#Date : 2015/10/27
+#Operation: patch back
+# Purpose: for set volte emergency pdn protocol
+allow radio mtk_em_pdn_prop:property_service set;
+
+#Date : 2015/11/11
+#Operation: IT
+# Purpose: for set ims simulate
+allow radio mtk_em_ims_simulate_prop:property_service set;
+
+#Date : 2015/11/13
+#Operation: IT
+# Purpose: for set auto answer
+allow radio mtk_em_auto_answer_prop:property_service set;
+
+#Date : 2016/07/19
+#Operation: IT
+# Purpose: for set bt.sspdebug
+allow radio mtk_em_bt_sspdebug_prop:property_service set;
+
+# Date : 2014/10/20
+# Operation : IT
+# Purpose : enable ATCId in engineer mode.
+allow radio ctl_atcid-daemon-u_prop:property_service set;
+allow radio ctl_atci_service_prop:property_service set;
+allow radio persist_service_atci_prop:property_service set;
+
+# Date : 2016/07/05
+# Purpose :
+#   Write IMEI - presanity item write imei should read the file on storage
+#   Swift APK integration - access TTL scripts and logs on external storage
+#   eng mode camera - save iamges files and log files on external storage
+#   eng mode ygps - save location information on external storage
+allow radio media_rw_data_file:dir { create_dir_perms };
+allow radio media_rw_data_file:file { create_file_perms };
+
+# Date : 2016/08/02
+# Purpose :
+#   Swift APK integration - access ccci dir/file
+allow radio ccci_fsd:dir { r_dir_perms };
+allow radio ccci_fsd:file { r_file_perms };
+
+# Date : W1630 2016/07/21
+# Operation: IT
+# Purpose: for set ril.force_apn_change property in EM IA
+allow radio mtk_em_ril_apnchange_prop:property_service set;
+
+# Date : 2016/07/25
+# Operation : Bluetooth access NVRAM fail in Engineer Mode
+# Purpose : for Bluetooth read NVRAM data
+allow radio nvdata_file:dir search;
+allow radio nvdata_file:file rw_file_perms;
+
+# new
+allow radio system_app_data_file:dir getattr;
