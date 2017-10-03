@@ -25,7 +25,7 @@ on early-init
     chmod 0755 /sys/kernel/debug
 
 on init
- export LD_PRELOAD "libmtk_symbols.so libmtk_shyms.so libxlog.so"
+ export LD_PRELOAD "libmtk_shyms.so libxlog.so"
  export LD_SHIM_LIBS /system/libdpframework.so|libmtk_shyms.so
  export LD_SHIM_LIBS /system/bin/sn|libmtk_shyms.so
  export LD_SHIM_LIBS /system/bin/MtkCodecService|libxlog.so
@@ -34,7 +34,7 @@ on init
  export LD_SHIM_LIBS /system/lib/egl/libGLES_mali.so|libxlog.so
  export LD_SHIM_LIBS /system/lib/libfmcust.so|libxlog.so
  export LD_SHIM_LIBS /system/lib/libcam_utils.so|libmtk_shyms.so
- export LD_SHIM_LIBS /system/bin/mtk_agpsd|libmtk_symbols.so
+ export LD_SHIM_LIBS /system/bin/mtk_agpsd|libmtk_shyms.so
  export LD_SHIM_LIBS /system/bin/guiext-server|libmtk_shyms.so
  export LD_SHIM_LIBS /system/bin/program_binary_service|libmtk_shyms.so    
 

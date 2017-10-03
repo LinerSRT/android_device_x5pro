@@ -1,6 +1,0 @@
-This is patch directory
-
-cd WORKING_DIR
-sh device/LeEco/X3/patches/install.sh
-sh device/LeEco/X3/patches/uninstall.sh
-

@@ -5,10 +5,14 @@ LOCAL_SRC_FILES := \
     mtk_cam.cpp \
     mtk_ui.cpp \
     mtk_sys.cpp \
-    mtk_audio.cpp
+    mtk_audio.cpp \
+	icu55.c \
+    icu53.c \
+	xlog.c \
+	ssl.c
 
 
-LOCAL_SHARED_LIBRARIES := libdpframework 
+LOCAL_SHARED_LIBRARIES := libdpframework ibicuuc libicui18n liblog libui libicuuc libssl libcutils
 LOCAL_MODULE := libmtk_shyms
 LOCAL_MODULE_TAGS := optional
 LOCAL_CLANG := true
