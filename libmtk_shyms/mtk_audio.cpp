@@ -16,6 +16,10 @@ extern "C" {
         return 0;
     }
     
+    void _ZN7android12AudioPCMxWay4stopEv(){
+	    
+    }
+	
     int _ZN7android11AudioSystem23GetVoiceUnlockDLLatencyEv(){
         return 0;
     }
